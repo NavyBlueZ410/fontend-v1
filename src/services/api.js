@@ -24,3 +24,20 @@ export const createUser = (data) => {
         })
     })
 }
+
+export const sendMailResetPassword = (data) => {
+    return new Promise((resolve) => {
+        let url = `${domain}/sendMail`
+        let body = {
+            email:data,
+        }
+        let header = {
+            'Content-Type': 'application/json'
+        }
+        axios.post(url,body,{headers: header}).then((res) => {
+            resolve(res)
+        }).catch((err) => {
+            resolve(false)
+        })
+    })
+}

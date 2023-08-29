@@ -109,19 +109,32 @@ function Login() {
                     marginBottom:'1rem',
                     cursor:'pointer'
                 }}
-                onClick={() => {navigate('/register')}}
+                onClick={() => {navigate('/resetPassword')}}
             >
-                สมัครสมาชิก
+                ลืมรหัสผ่าน?
             </Typography>
             <Button
                 variant='contained' 
                 color="primary"
                 fullWidth
-                sx={{margin:'2rem 0'}}
+                sx={{margin:'1rem 0'}}
                 onClick={() => submitLogin()}
             >
                 เข้าสู่ระบบ
             </Button>
+            <Typography 
+                component='p'
+                variant='p'
+                color='primary'
+                sx={{
+                    textAlign:'center',
+                    marginBottom:'2rem',
+                    cursor:'pointer'
+                }}
+                onClick={() => {navigate('/register')}}
+            >
+                สมัครสมาชิก
+            </Typography>
         </Box>
     </Box>
   )

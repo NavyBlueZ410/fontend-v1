@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './pages/authen/Login';
 import Register from './pages/authen/Register';
 import Dashboard from './pages/dashboard/Dashboard';
+import ResetPassword from './pages/authen/ResetPassword';
 import { ToastContainer} from 'react-toastify';
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
               <Route path='/' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/dashboard' element={<Dashboard />} />
+              <Route path='/resetPassword' element={<ResetPassword />} />
           </Routes>
         </BrowserRouter>
     </>

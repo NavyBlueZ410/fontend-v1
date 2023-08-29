@@ -4,9 +4,11 @@ import {TextField,Typography, Button, Box, Grid, FormControl, InputLabel, Select
 import ExtensionIcon from '@mui/icons-material/Extension';
 import {notifyError,notifyInfo,notifySuccess,notifyWarning} from '../../component/Notify'
 import * as api from '../../services/api'
+import Loading from '../../component/Loading'
 
 function Register() {
   const navigate = useNavigate()
+  const [loading,setLoading] = useState(false)
   const [formRegister,setFormRegister] = useState({
     username:'',
     password:'',
@@ -60,10 +62,23 @@ function Register() {
   }
 
   const register = async() => {
+    setLoading(true)
     let res = await api.createUser(formRegister)
+    setLoading(false)
     if(res){
       if(res['data']['code'] === 200 ){
         notifySuccess(res['data']['message'])
+        setFormRegister({
+          username:'',
+          password:'',
+          confirm_password:'',
+          pname:'',
+          fname:'',
+          lname:'',
+          nickname:'',
+          phone:'',
+          status_user:''
+        })
       }else{
         notifyWarning(res['data']['message'])
       }
@@ -83,6 +98,11 @@ function Register() {
             height:'100%'
         }}
     >
+        {
+            loading ? 
+            <Loading/> : null
+        }
+        
          <Box
             sx={{
                 background:'#fff',
